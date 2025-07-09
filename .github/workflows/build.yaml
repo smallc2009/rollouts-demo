@@ -8,8 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: rollouts-demo-ambrosia
-  REGISTRY_USER: ambrosiaaaaa
+  IMAGE_NAME: rollouts-demo-anson
   REGISTRY: docker.io
 
 jobs:
@@ -33,7 +32,7 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
-          username: ${{ env.REGISTRY_USER }}
+          username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Make build script executable
