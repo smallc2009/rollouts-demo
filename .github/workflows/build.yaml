@@ -41,7 +41,7 @@ jobs:
       - name: Build and push images
         run: |
           SHOULD_PUSH=${{ github.event_name != 'pull_request' && 'true' || 'false' }}
-          IMAGE_PATH="${{ env.REGISTRY_USER }}/${{ env.IMAGE_NAME }}"
+          IMAGE_PATH="${{ secrets.REGISTRY_USER }}/${{ env.IMAGE_NAME }}"
           ./build-multiarch.sh ${{ env.REGISTRY }} $IMAGE_PATH $SHOULD_PUSH
       - name: Check images (PR only)
         if: github.event_name == 'pull_request'
